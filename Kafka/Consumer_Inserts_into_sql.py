@@ -5,7 +5,7 @@ from datetime import datetime
 
 from Message_monitoring_system.db.PostgreSQL import Email, session, SuspiciousHostageContent, SuspiciousExplosiveContent
 
-# הגדרת צרכן Kafka לנושאים "messages.hostage" ו-"messages.explosive"
+
 consumer_suspicious = KafkaConsumer(
     'messages.hostage', 'messages.explosive',
     bootstrap_servers=['localhost:9092'],
@@ -30,7 +30,7 @@ for message in consumer_suspicious:
         device_info=email_data.get("device_info")
     )
     session.add(email_entry)
-    session.commit()  # שמירת ה-email_entry כך שנוכל לקשר אליו משפטים חשודים
+    session.commit()
 
     # הכנסת משפטים חשודים לטבלאות בהתאם לנושא ההודעה
     suspicious_sentences = email_data.get("sentences", [])

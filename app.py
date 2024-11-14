@@ -22,6 +22,30 @@ def receive_email():
 
 
 
+@app.route('/api/email', methods=['POST'])
+def receive_email():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    Producer_Sending_all(data)
+    send_to_suspicious_topic(data)
+    return jsonify(data), 200
+
+
+@app.route('/api/email', methods=['POST'])
+def receive_email():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    Producer_Sending_all(data)
+    send_to_suspicious_topic(data)
+    return jsonify(data), 200
+
+
+
+
 
 
 
