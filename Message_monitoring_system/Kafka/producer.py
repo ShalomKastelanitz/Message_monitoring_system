@@ -23,3 +23,16 @@ def send_to_suspicious_topic(data):
             producer.send(topic, data)
             print(f"Suspicious content found: {keyword}. Sent to topic: {topic}")
 
+
+def Finding_most_dangerous_sentence(data):
+    dangerous_sentence=data[0]
+    for  text in data:
+        if text.count("explos") > text.count("hostage"):
+          if text.count("explos")>dangerous_sentence.count("explos"):
+              dangerous_sentence=text
+
+
+        elif text.count("hostage")>dangerous_sentence.count("hostage"):
+             dangerous_sentence=text
+
+    return dangerous_sentence
