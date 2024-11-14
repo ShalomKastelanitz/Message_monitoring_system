@@ -32,7 +32,7 @@ for message in consumer_suspicious:
     session.add(email_entry)
     session.commit()
 
-    # הכנסת משפטים חשודים לטבלאות בהתאם לנושא ההודעה
+    # הכנסת משפטים חשודים לטבלאות
     suspicious_sentences = email_data.get("sentences", [])
     if topic == "messages.hostage":
         for sentence in suspicious_sentences:

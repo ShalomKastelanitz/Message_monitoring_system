@@ -1,8 +1,8 @@
 from Message_monitoring_system.db.PostgreSQL import session, Email
 
-def get_email_with_suspicious_content(email_id):
+def get_email_with_suspicious_content(email_1):
     # שליפת אימייל יחד עם התוכן החשוד
-    email = session.query(Email).filter_by(id=email_id).first()
+    email = session.query(Email).filter_by(email_address=email_1).first()
     if not email:
         return None
 
